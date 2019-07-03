@@ -25,8 +25,34 @@ $ mv composer.phar /usr/local/bin/composer
 ```
 git clone https://github.com/Ryuki0222/Article.git
 ```
+4. start mysql & create database
+please start your environment mysql
 
-4. start server
+next, create database
+```
+$ mysql -u {user_name} -p
+password:
+
+mysql> create database if not exists Article character set utf8
+```
+
+5. change env value
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=Article
+DB_USERNAME={YOUR_USER_NAME}
+DB_PASSWORD={YOUR_PASSWORD}
+```
+
+6. excute migarate
+```
+$ php artisan migrate
+```
+
+7. start server
 ```
 $ php artisan serve
 ```
@@ -112,7 +138,7 @@ password | string | require | body
 #### response
 ```
 {
-    "is_authenticate": true 
+    "done": true
 }
 ```
 
@@ -222,13 +248,57 @@ article_id | int | require | path
         },
 ```
 
-### create a aritcle
+### get user's articles
 ```
-post {url}/api/v1/atricle
+get {url}/api/v1/user/{user_id}/articles
 ```
 #### params
 name | type | require/optional | paramType
 :-- | :-- | :-- | :--
+user_id | int | require | path
+#### response
+```
+{
+    articles: [
+        {
+            "id": 1,
+            "title": "article1",
+            "description": "desc1",
+            "image_path": "aaa.png",
+            "created_at": "0000/00/00",
+            "updated_at": "0000/00/00"
+        },
+        {
+            "id": 2,
+            "title": "article2",
+            "description": "desc2",
+            "image_path": "bbb.png",
+            "created_at": "9999/99/99",
+            "updated_at": "9999/99/99"
+        },
+        
+    ]
+}
+```
+
+### get user's a article
+```
+get {url}/api/v1/user/{user_id}/article/{article_id}
+```
+#### params
+name | type | require/optional | paramType
+:-- | :-- | :-- | :--
+user_id | int | require | path
+article_id | int | require | path
+
+### create a aritcle
+```
+post {url}/api/v1/user/{user_id}/atricle
+```
+#### params
+name | type | require/optional | paramType
+:-- | :-- | :-- | :--
+user_id | int | require | path
 title | string | require | body
 body | string | require | body
 description | string | require | body
@@ -237,18 +307,21 @@ user_id | string | require | body
 
 #### response
 ```
+{
     "done": true
+}
 ```
 
 
 #### patch a article
 ```
-patch {url}/api/v1/atricle/{article_id}
+patch {url}/api/v1/user/{user_id}/atricle/{article_id}
 ```
 #### params
 name | type | require/optional | paramType
 :-- | :-- | :-- | :--
-article_id | string | require | path
+article_id | int | require | path
+article_id | int | require | path
 title | string | optional | body
 body | string | optional | body
 description | string | optional | body
@@ -264,7 +337,7 @@ user_id | string | require | params
 
 #### delete a article
 ```
-delete {url}/api/v1/atricle/{aritcle_id}
+delete {url}/api/v1/user/{user_id}/atricle/{aritcle_id}
 ```
 
 #### params
