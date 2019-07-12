@@ -50,7 +50,7 @@ const toastFaildStyle = {
 
 export default class Account extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
             name: '',
             email: ''
@@ -73,10 +73,10 @@ export default class Account extends Component {
                 this.setState({
                     name: res.data.name,
                     email: res.data.email
-                });
+                })
             })
             .catch(err => {
-                console.log(err);
+                console.log(err)
             })
     }
 
@@ -94,8 +94,8 @@ export default class Account extends Component {
 
     updateUserInfo() {
         this.resetToast()
-        const name = this.state.name.toString();
-        const email = this.state.email.toString();
+        const name = this.state.name.toString()
+        const email = this.state.email.toString()
         if (email.match(/.+@.+\..+/) == null) {
             const toast = document.querySelector('.toast_faild')
             toast.innerText = 'this is not format of email'
