@@ -91,7 +91,7 @@ export default class Login extends Component {
         axios.post('/api/v1/user/login', body)
             .then(res => {
                 const user = res.data
-                const userId = user.id;
+                const userId = user.id
                 Cookie.set(Define.COOKIE_USER_ID_KEY(), userId, { path: '/' })
 
                 const toast = document.querySelector('.toast_success')

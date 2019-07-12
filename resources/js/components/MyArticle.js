@@ -4,7 +4,7 @@ import Cookie from 'js-cookie'
 import axios from 'axios'
 import ViewTableRow from './ViewTableRow'
 import EditArticle from './EditArticle'
-import Define from './Define';
+import Define from './Define'
 
 const viewTableStyle = {
     width: '100%',
@@ -63,13 +63,13 @@ const searchTextboxStyle = {
 export default class MyArticle extends Component {
 
 	constructor() {
-		super();
+		super()
 		this.state = {
             initArticles: [],
             articles: [],
             value: ''
         }
-        this.searchArticle = this.searchArticle.bind(this);
+        this.searchArticle = this.searchArticle.bind(this)
     }
 
     onClick(e, id) {
@@ -83,17 +83,17 @@ export default class MyArticle extends Component {
                 this.setState({
                     initArticles: res.data,
                     articles: res.data
-                });
+                })
             })
             .catch(err => {
-                console.log(err);
+                console.log(err)
             })
     }
 
     searchArticle(e) {
-        const value = e.target.value.toString();
+        const value = e.target.value.toString()
         const updateList = this.state.initArticles.filter( article => {
-            return article.title.toString().toLowerCase().search(value.toLowerCase()) !== -1;
+            return article.title.toString().toLowerCase().search(value.toLowerCase()) !== -1
         })
         this.setState({
             articles: updateList
@@ -128,6 +128,6 @@ export default class MyArticle extends Component {
 					</table>
 				</div>
 			</React.Fragment>
-		);
+		)
 	}
 }

@@ -26,16 +26,16 @@ const tabButtonStyle = {
 export default class Body extends Component {
 
     constructor() {
-        super();
+        super()
         console.log(Cookie.get(Define.COOKIE_USER_ID_KEY()))
     }
 
     handleSelect(index, last) {
-        console.log('Selected tab: ' + index + ', Last tab: ' + last);
+        console.log('Selected tab: ' + index + ', Last tab: ' + last)
     }
 
     onClickOAB() {
-        ReactDOM.render(<Article />, document.querySelector('.primary_body'));
+        ReactDOM.render(<Article />, document.querySelector('.primary_body'))
     }
 
     onClickMAB() {
@@ -43,17 +43,17 @@ export default class Body extends Component {
         if (!userId) {
             return alert('please Login')
         }
-        ReactDOM.render(<MyArticle />, document.querySelector('.primary_body'));
+        ReactDOM.render(<MyArticle />, document.querySelector('.primary_body'))
     }
 
     onClickAB() {
         const userId = Cookie.get(Define.COOKIE_USER_ID_KEY())
 
         if (!userId) {
-            ReactDOM.render(<NonAccount />, document.querySelector('.primary_body'));
+            ReactDOM.render(<NonAccount />, document.querySelector('.primary_body'))
         }
         else {
-            ReactDOM.render(<Account />, document.querySelector('.primary_body'));
+            ReactDOM.render(<Account />, document.querySelector('.primary_body'))
         }
     }
 
@@ -63,7 +63,7 @@ export default class Body extends Component {
         if (!userId) {
             return alert('please Login')
         }
-        ReactDOM.render(<NewArticle />, document.querySelector('.primary_body'));
+        ReactDOM.render(<NewArticle />, document.querySelector('.primary_body'))
     }
 
     render() {
@@ -93,9 +93,9 @@ export default class Body extends Component {
 
               </div>
           </React.Fragment>
-        );
+        )
       }
 }
 
-ReactDOM.render(<Body />, document.querySelector('.primary'));
-ReactDOM.render(<Article />, document.querySelector('.primary_body'));
+ReactDOM.render(<Body />, document.querySelector('.primary'))
+ReactDOM.render(<Article />, document.querySelector('.primary_body'))

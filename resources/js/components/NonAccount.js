@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import Login from './Login';
-import Signup from './Signup';
+import Login from './Login'
+import Signup from './Signup'
 
 const tabTableStyle = {
     width: '100%',
@@ -21,7 +21,7 @@ const tabButtonStyle = {
 
 export default class NonAccount extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
             name: '',
             email: '',
